@@ -13,23 +13,39 @@
             <!-- nav -->
         <nav class="row bg-primary shadow-sm">
             <div class="col-sm-12">
-                <a href="#">Home</a>
+            <a href="{{ route('home') }}">Home</a>
+
+            @guest
+            <a href="{{ route('auth.sign_in') }}">Sign In</a> 
+            <a href="{{ route('auth.sign_up') }}">Sign Up</a> 
+            @endguest
+
+            @auth
+                <a href="#">Account ({{ auth()->user()->name }})</a>
+                <a href="{{ route('auth.sign_out') }}">Sign out</a>
+            @endauth
+
             </div>
         </nav>
 
         <!-- header -->
-        <header class="row text-muted">
-            TokaPay
+        <header class="row text-muted bg-body border-bottom">
+            <div class="col-sm-12">
+                TokaPay
+            </div>
         </header>
 
-    
+        @include('partials.errors')
+        @include('partials.messages')
 
         <!-- body -->
-        <nav class="row p-3">
+        <section class="row p-3">
             <div class="col-sm-12">
                 @yield('content')
             </div>
-        </nav>
+        </secton>
+
+
 
 
     </main>

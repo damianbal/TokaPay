@@ -20,8 +20,9 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 
-Route::get('/sign-in', 'AuthController@signIn');
-Route::get('/sign-up', 'AuthController@signUp');
+Route::get('/sign-in', 'AuthController@signIn')->name('auth.sign_in');
+Route::get('/sign-up', 'AuthController@signUp')->name('auth.sign_up');
+Route::get('/sign-out', 'AuthController@signOut')->name('auth.sign_out');
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,7 @@ Route::get('/sign-up', 'AuthController@signUp');
 | Dashboard
 |--------------------------------------------------------------------------
  */
+Route::get('/', 'DashboardController@index')->name('home');
 
  /*
 |--------------------------------------------------------------------------
