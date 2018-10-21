@@ -35,13 +35,14 @@ Route::get('/sign-out', 'AuthController@signOut')->name('auth.sign_out');
 | Dashboard
 |--------------------------------------------------------------------------
  */
-Route::get('/', 'DashboardController@index')->name('home');
+Route::get('/', 'DashboardController@index')->name('home')->middleware('auth');
 
  /*
 |--------------------------------------------------------------------------
 | Token
 |--------------------------------------------------------------------------
  */
+Route::get('/payment-token/create', 'PaymentTokenController@create')->middleware('auth')->name('payment_token.create');
 
  /*
 |--------------------------------------------------------------------------

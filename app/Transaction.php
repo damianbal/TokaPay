@@ -10,11 +10,11 @@ class Transaction extends Model
 
     public function receiver()
     {
-        return $this->hasOne(App\User::class, 'receiver_id');
+        return $this->hasOne(User::class, 'id', 'receiver_id');
     }
 
     public function payer()
     {
-        return $this->hasOne(App\User::class, 'payer_id');
+        return $this->hasOne(User::class, 'id', 'payer_id');
     }
 }

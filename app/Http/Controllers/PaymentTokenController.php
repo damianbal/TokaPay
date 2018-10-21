@@ -24,7 +24,7 @@ class PaymentTokenController extends Controller
      */
     public function create()
     {
-        // form to create token
+        return view('payment_token.create');
     }
 
     /**
