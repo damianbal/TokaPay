@@ -6,6 +6,7 @@ use App\Core\RequestTokenTransformer;
 use App\Http\Controllers\Controller;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProcessPaymentRequest;
 
 class PaymentController extends Controller
 {
@@ -18,7 +19,7 @@ class PaymentController extends Controller
 
     public function acceptPayment(
         RequestTokenTransformer $tokenTransformer,
-        Request $request) {
+        ProcessPaymentRequest $request) {
         $paymentToken = $tokenTransformer->getPaymentToken();
         $receiverUser = $tokenTransformer->getUser();
         $transAmount = $request->input('transAmount');

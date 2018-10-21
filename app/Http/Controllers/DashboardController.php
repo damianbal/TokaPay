@@ -13,6 +13,7 @@ class DashboardController extends Controller
 //        $transactions = auth()->user()->transactions()->paginate(10);
         $transactions = Transaction::where('payer_id', auth()->user()->id)
                                    ->orWhere('receiver_id', auth()->user()->id)
+                                   ->orderBy('created_at','DESC')
                                    ->paginate(10);
 
         return view('dashboard.transactions', ['transactions' => $transactions]);

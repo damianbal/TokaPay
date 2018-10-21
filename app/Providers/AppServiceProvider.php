@@ -17,6 +17,7 @@ class AppServiceProvider extends ServiceProvider
         //
         User::created(function($model) {
             $model->access_key = bin2hex(random_bytes(16));
+            $model->balance = 123;
             $model->save();
         });
     }

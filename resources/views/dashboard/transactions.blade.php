@@ -3,11 +3,8 @@
 @section('title') Transactions @endsection
 
 @section('content')
-               <div class="row">
-                <div class="col-sm-12 text-sm-right">
-                <a href="{{ route('payment_token.create') }}" class="btn btn-sm btn-dark">Create Payment Token</a>
-                </div>
-            </div>
+
+    @include('partials.toolbar')
 
     <div class="card simple-card">
         <div class="card-header border-bottom">Transactions</div> 

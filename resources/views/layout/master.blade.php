@@ -21,7 +21,6 @@
             @endguest
 
             @auth
-                <a href="#">Account ({{ auth()->user()->name }})</a>
             <a href="{{ route('tokens') }}">Tokens</a>
                 <a href="{{ route('auth.sign_out') }}">Sign out</a>
             @endauth

@@ -48,6 +48,14 @@ Route::post('/payment-token/store', 'PaymentTokenController@store')->middleware(
 Route::post('/payment-token/{paymentToken}', 'PaymentTokenController@destroy')->middleware('auth')->name('payment_token.destroy');
 
 
+/*
+|--------------------------------------------------------------------------
+| Tutorial
+|--------------------------------------------------------------------------
+ */
+Route::get('/tut/accept-payments', 'TutorialController@acceptPayments')->name('tut.accept_payments');
+Route::get('/tut/pay', 'TutorialController@pay')->name('tut.pay');
+
  /*
 |--------------------------------------------------------------------------
 | User

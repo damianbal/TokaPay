@@ -49,7 +49,7 @@ class PaymentTokenController extends Controller
 
         $paymentToken = $this->paymentService->createPaymentToken(auth()->user(), $amount);
 
-        if($paymentToken == null) return back()->with('errors', ['Could not create payment token!']);
+        if($paymentToken == null) return back()->with('messages', ['Could not create payment token!']);
 
         return back()->with('messages', ['Created payment token, token: ' . $paymentToken->token]);
     }
