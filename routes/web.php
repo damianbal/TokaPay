@@ -20,8 +20,8 @@ use Illuminate\Support\Facades\Auth;
 */
 Auth::routes();
 
-Route::get('/sign-in', 'AuthController@signIn')->name('auth.sign_in');
-Route::get('/sign-up', 'AuthController@signUp')->name('auth.sign_up');
+Route::get('/login', 'AuthController@signIn')->name('login');
+Route::get('/register', 'AuthController@signUp')->name('register');
 Route::get('/sign-out', 'AuthController@signOut')->name('auth.sign_out');
 
 /*
@@ -36,6 +36,7 @@ Route::get('/sign-out', 'AuthController@signOut')->name('auth.sign_out');
 |--------------------------------------------------------------------------
  */
 Route::get('/', 'DashboardController@index')->name('home')->middleware('auth');
+Route::get('/tokens', 'DashboardController@tokens')->name('tokens')->middleware('auth');
 
  /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::get('/', 'DashboardController@index')->name('home')->middleware('auth');
 |--------------------------------------------------------------------------
  */
 Route::get('/payment-token/create', 'PaymentTokenController@create')->middleware('auth')->name('payment_token.create');
+Route::post('/payment-token/store', 'PaymentTokenController@store')->middleware('auth')->name('payment_token.store');
+Route::post('/payment-token/{paymentToken}', 'PaymentTokenController@destroy')->middleware('auth')->name('payment_token.destroy');
+
 
  /*
 |--------------------------------------------------------------------------

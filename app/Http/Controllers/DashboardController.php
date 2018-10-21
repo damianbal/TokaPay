@@ -17,4 +17,11 @@ class DashboardController extends Controller
 
         return view('dashboard.transactions', ['transactions' => $transactions]);
     }
+
+    public function tokens(Request $request)
+    {
+        $tokens = auth()->user()->tokens()->paginate(10);
+
+        return view('dashboard.tokens', ['tokens' => $tokens]);
+    }
 }

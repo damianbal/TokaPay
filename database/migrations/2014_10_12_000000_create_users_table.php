@@ -13,10 +13,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        $t = bin2hex(
-            openssl_random_pseudo_bytes(16));
-
-        Schema::create('users', function (Blueprint $table) use ($t) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->default('Account');
             $table->string('email')->unique();
@@ -24,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->boolean('business')->default(false);
             $table->double('balance')->default(0.0);
-            $table->string('access_key')->default($t);
+            $table->string('access_key')->default('x');
             $table->rememberToken();
             $table->timestamps();
         });

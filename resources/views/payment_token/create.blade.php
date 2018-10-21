@@ -9,7 +9,7 @@
             <div class="text-muted">Your balance is <b>{{ auth()->user()->balance }}</b></div>
             <br>
             @if(auth()->user()->balance > 0)
-            <form method="POST" action="/login">
+        <form method="POST" action="{{ route('payment_token.store') }}">
                 @csrf
 
                 <div class="form-group">

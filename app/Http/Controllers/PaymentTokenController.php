@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use App\PaymentToken;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreTokenRequest;
+use App\Services\PaymentService;
 
 class PaymentTokenController extends Controller
 {
+    /** @var \App\Services\PaymentService */
+    protected $paymentService = null;
+    
+    public function __construct(PaymentService $paymentService)
+    {
+        $this->paymentService = $paymentService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -33,9 +43,15 @@ class PaymentTokenController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreTokenRequest $request)
     {
-        // store new token
+        $amount = $request->input('amount');
+
+        $paymentToken = $this->paymentService->createPaymentToken(auth()->user(), $amount);
+
+        if($paymentToken == null) return back()->with('errors', ['Could not create payment token!']);
+
+        return back()->with('messages', ['Created payment token, token: ' . $paymentToken->token]);
     }
 
     /**
@@ -80,7 +96,12 @@ class PaymentTokenController extends Controller
      */
     public function destroy(PaymentToken $paymentToken)
     {
-        // ... leave
+        if(!auth()->user()->can('delete', $paymentToken)) {
+            return back()->with('messages', ['You can not delete that payment token!']);
+        }
         
+        $paymentToken->delete();
+
+        return back()->with('messages', ['Payment token removed!']);
     }
 }

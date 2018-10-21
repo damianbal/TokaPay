@@ -16,12 +16,13 @@
             <a href="{{ route('home') }}">Home</a>
 
             @guest
-            <a href="{{ route('auth.sign_in') }}">Sign In</a> 
-            <a href="{{ route('auth.sign_up') }}">Sign Up</a> 
+            <a href="{{ route('login') }}">Sign In</a> 
+            <a href="{{ route('register') }}">Sign Up</a> 
             @endguest
 
             @auth
                 <a href="#">Account ({{ auth()->user()->name }})</a>
+            <a href="{{ route('tokens') }}">Tokens</a>
                 <a href="{{ route('auth.sign_out') }}">Sign out</a>
             @endauth
 
