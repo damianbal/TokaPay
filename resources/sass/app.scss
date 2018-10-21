@@ -1,0 +1,53 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+html {
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    background: #fff;
+    border-radius: 2px;
+}
+
+header {
+    padding: 25px;
+    font-size: 24px;
+}
+
+nav {
+
+    line-height: 50px;
+
+    a {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 17px;
+        padding-left: 10px;
+        padding-right: 10px;
+        
+    }
+
+    a:hover {
+        color: #fff;
+      text-decoration: none;
+      }
+}
+
+.simple-card {
+    background: #fff !important;
+
+    border: none;
+
+    .card-header {
+        background: #fff;
+        border: none;
+        font-size: 22px;
+    }
+}
