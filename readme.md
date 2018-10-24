@@ -1,11 +1,12 @@
 # TokaPay
-> Simple platform to learn about Payments
+> Simple platform to learn about Payments made with Laravel and Omnipay
 
 Aim of this project is to make something like PayPal but of course lot simpler.
 
 Idea of the project is to pay and get paid by generated tokens.
 
 ### Features
+* Add funds to account by Credit card (Stripe)
 * Accept payment by API
 * Create payment token in dashboard
 * See list of tokens in dashboard (remove tokens as well)
