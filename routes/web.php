@@ -61,3 +61,5 @@ Route::get('/tut/pay', 'TutorialController@pay')->name('tut.pay');
 | User
 |--------------------------------------------------------------------------
  */
+Route::get('/account/add-funds', 'AccountController@addFunds')->name('account.add_funds')->middleware('auth');
+Route::post('/account/add-funds', 'AccountController@submitAddFunds')->name('account.submit_add_funds')->middleware('auth');

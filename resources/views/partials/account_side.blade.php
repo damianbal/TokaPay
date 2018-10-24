@@ -10,3 +10,8 @@
     <div class="col-sm-6 font-weight-bold">Access Key</div> 
     <div class="col-sm-12 small"><code>{{ auth()->user()->access_key }}</code></div>
 </div>
+<div class="row">
+    <div class="col-sm-12">
+ <a href="{{ route('account.add_funds') }}" class="btn btn-sm btn-block btn-primary">Add Funds</a>
+    </div>
+</div>
